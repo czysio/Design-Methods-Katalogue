@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import krzysiek.olejnik.katalogue.repository.UserRepository;
 
-public class UniqueEmailValidator implements ConstraintValidator<String, UniqueEmail> {
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
 	@Autowired
 	UserRepository userRepository;
 
 	@Override
-	public void initialize(UniqueEmail constraintAnnotation) {
-
+	public void initialize(UniqueEmail arg0) {
+		
 	}
-	
+
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
 		if(userRepository.findOneByEmail(value) == null) {
 			return true;
 		}
-			return false;
+		return false;
 	}
 
 }
