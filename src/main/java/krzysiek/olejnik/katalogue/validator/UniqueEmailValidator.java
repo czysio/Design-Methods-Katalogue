@@ -13,16 +13,16 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
 	UserRepository userRepository;
 
 	@Override
-	public void initialize(UniqueEmail constraintAnnotation) {
-
+	public void initialize(UniqueEmail arg0) {
+		
 	}
-	
+
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
 		if(userRepository.findOneByEmail(value) == null) {
 			return true;
 		}
-			return false;
+		return false;
 	}
 
 }String  ConstraintValidatorContext
