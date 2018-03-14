@@ -13,7 +13,7 @@
 
 <div class="container">
 
-<form class="form-horizontal">
+<form:form modelAttribute="icon" method="post"  class="form-horizontal">
 <fieldset>
 
 <!-- Form Name -->
@@ -23,8 +23,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textarea">Założenia</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="textarea" name="textarea">tekst
-</textarea>
+    <form:textarea class="form-control" id="textarea" path="assumptions"/>tekst
   </div>
 </div>
 
@@ -32,8 +31,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textarea">Zasady</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="textarea" name="textarea">tekst
-</textarea>
+    <form:textarea class="form-control" id="textarea" path="rules"/>tekst
   </div>
 </div>
 
@@ -41,7 +39,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textarea">Problemy</label>
   <div class="col-md-4">                     
-    <textarea class="form-control" id="textarea" name="textarea">tekst</textarea>
+    <form:textarea class="form-control" id="textarea" path="problems"/>tekst
   </div>
 </div>
 
@@ -49,7 +47,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="filebutton">Ikona preblemów</label>
   <div class="col-md-4">
-    <input id="filebutton" name="filebutton" class="input-file" type="file">
+    <form:input id="filebutton" path="problems_icon" class="input-file" type="file">
   </div>
 </div>
 
@@ -87,17 +85,17 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="radios">Poziom trudności</label>
   <div class="col-md-4"> 
-  Łatwy
+ 	 Łatwy
     <label class="radio-inline" for="radios-0">
-      <input name="radios" id="radios-0" value="1" checked="checked" type="radio">
+      <input name="radios" id="radios-0a" value="1" type="radio">
       1
     </label> 
     <label class="radio-inline" for="radios-1">
-      <input name="radios" id="radios-1" value="2" type="radio">
+      <input name="radios" id="radios-1a" value="2" checked="checked" type="radio">
       2
     </label> 
     <label class="radio-inline" for="radios-2">
-      <input name="radios" id="radios-2" value="3" type="radio">
+      <input name="radios" id="radios-2a" value="3" type="radio">
       3
     </label>
     Trudny
@@ -110,15 +108,15 @@
   <div class="col-md-4"> 
   	Niski
     <label class="radio-inline" for="radios-0">
-      <input name="radios" id="radios-0" value="1" checked="checked" type="radio">
+      <input name="radios" id="radios-0b" value="1" type="radio">
       1
     </label> 
     <label class="radio-inline" for="radios-1">
-      <input name="radios" id="radios-1" value="2" type="radio">
+      <input name="radios" id="radios-1b" value="2" checked="checked" type="radio">
       2
     </label> 
     <label class="radio-inline" for="radios-2">
-      <input name="radios" id="radios-2" value="3" type="radio">
+      <input name="radios" id="radios-2b" value="3" type="radio">
       3
     </label>
     Wysoki
@@ -131,15 +129,15 @@
   <div class="col-md-4"> 
   	Amatorzy
     <label class="radio-inline" for="radios-0">
-      <input name="radios" id="radios-0" value="1" checked="checked" type="radio">
+      <input name="radios" id="radios-0c" value="1"  type="radio">
       1
     </label> 
     <label class="radio-inline" for="radios-1">
-      <input name="radios" id="radios-1" value="2" type="radio">
+      <input name="radios" id="radios-1c" value="2" checked="checked" type="radio">
       2
     </label> 
     <label class="radio-inline" for="radios-2">
-      <input name="radios" id="radios-2" value="3" type="radio">
+      <input name="radios" id="radios-2c" value="3" type="radio">
       3
     </label>
     Profesjonaliści
@@ -152,15 +150,15 @@
   <div class="col-md-4"> 
   	Brak swobody
     <label class="radio-inline" for="radios-0">
-      <input name="radios" id="radios-0" value="1" type="radio">
+      <input name="radios" id="radios-0d" value="1" type="radio">
       1
     </label> 
     <label class="radio-inline" for="radios-1">
-      <input name="radios" id="radios-1" value="2" type="radio">
+      <input name="radios" id="radios-1d" value="2" checked="checked" type="radio">
       2
     </label> 
     <label class="radio-inline" for="radios-2">
-      <input name="radios" id="radios-2" value="3" type="radio">
+      <input name="radios" id="radios-2d" value="3" type="radio">
       3
     </label>
     Pełna swoboda

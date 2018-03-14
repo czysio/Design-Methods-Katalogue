@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import krzysiek.olejnik.katalogue.repository.UserRepository;
 
-public class UniqueEmailValidator implements ConstraintValidator<String, UniqueEmail> {
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
 	@Autowired
 	UserRepository userRepository;
@@ -25,4 +25,4 @@ public class UniqueEmailValidator implements ConstraintValidator<String, UniqueE
 			return false;
 	}
 
-}
+}String  ConstraintValidatorContext
