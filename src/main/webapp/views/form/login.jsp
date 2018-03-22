@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="form-group">
 			<h2>Zaloguj się:</h2>
-			<p style="color: red; font-size: 1.5em">${param.message}</p>.
+			<p style="color: red; font-size: 1.5em">${param.message}</p>
 			<form method="POST" >
 				<label>username/email: <input class="form-control"  type="text" name="username"
 					placeholder="username/email"></label><br> 

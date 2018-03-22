@@ -40,7 +40,7 @@ public class UserController {
 		String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
 		user.setPassword(password);
 		userRepository.save(user);
-		return "redirect:/home";
+		return "redirect:/";
 	}
 
 	@GetMapping("/login")
@@ -53,7 +53,7 @@ public class UserController {
 		User user = getUser(username);
 		if (user != null && BCrypt.checkpw(password, user.getPassword())) {
 			sess.setAttribute("logged", true);
-			return "redirect:/home";
+			return "redirect:/";
 		}
 		sess.setAttribute("logged", false);
 		String message = "";

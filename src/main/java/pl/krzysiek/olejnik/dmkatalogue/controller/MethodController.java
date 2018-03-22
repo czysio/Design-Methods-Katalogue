@@ -54,7 +54,7 @@ public class MethodController {
 		storageService.store(icon);
 		designMethod.setIcon(icon.getOriginalFilename());
 		designMethodRepository.save(designMethod);
-		return "redirect:/home";
+		return "redirect:";
 	}
 
 	@ModelAttribute("stages")

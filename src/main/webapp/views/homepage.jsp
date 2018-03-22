@@ -9,8 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Home page</title>
   <link rel="stylesheet" href="<c:url value="jquery-ui.css" />">
-<!--   <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
- -->  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="<c:url value="jquery-ui.js"/>" type="text/javascript" /></script>
   <script>
   $( function() {
