@@ -1,10 +1,16 @@
 package pl.krzysiek.olejnik.dmkatalogue.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import pl.krzysiek.olejnik.dmkatalogue.validator.UserFirstName;
@@ -22,9 +28,12 @@ public class User {
 	@UserLastName
 	private String lastName;
 	private String username;
-	@Size(min = 3)
 	private String password;
+	private String passwordConfirm;
 	private String email;
+	@ManyToMany
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 	
 	public long getId() {
 		return id;
@@ -58,6 +67,7 @@ public class User {
 		this.username = username;
 	}
 	
+	@Transient
 	public String getPassword() {
 		return password;
 	}
@@ -72,6 +82,22 @@ public class User {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

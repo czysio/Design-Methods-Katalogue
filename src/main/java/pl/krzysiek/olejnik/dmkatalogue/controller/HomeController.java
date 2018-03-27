@@ -18,9 +18,9 @@ import pl.krzysiek.olejnik.dmkatalogue.utility.StorageService;
 public class HomeController {
 
 	@Autowired
-	StorageService storageSrevice;
+	private StorageService storageSrevice;
 	@Autowired
-	DesignMethodRepository designMethodRepository;
+	 private DesignMethodRepository designMethodRepository;
 	
 	
 	

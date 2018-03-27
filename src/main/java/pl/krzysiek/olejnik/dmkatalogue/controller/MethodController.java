@@ -29,7 +29,7 @@ import pl.krzysiek.olejnik.dmkatalogue.utility.StorageService;
 public class MethodController {
 	
 	@Autowired
-	StorageService storageService;
+	private StorageService storageService;
 
 	@Autowired
 	public void FileUploadController(StorageService storageService) {

@@ -18,13 +18,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.krzysiek.olejnik.dmkatalogue.model.User;
 import pl.krzysiek.olejnik.dmkatalogue.repository.UserRepository;
+import pl.krzysiek.olejnik.dmkatalogue.utility.SecurityService;
+import pl.krzysiek.olejnik.dmkatalogue.utility.UserService;
+import pl.krzysiek.olejnik.dmkatalogue.validator.UserValidator;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserService userService;
+
+	@Autowired
+	private SecurityService securityService;
+
+	@Autowired
+	private UserValidator userValidator;
+
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping("/registration")
 	private String registration(Model model) {
@@ -37,23 +49,29 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "form/registration";
 		}
-		String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
-		user.setPassword(password);
-		userRepository.save(user);
-		return "redirect:/";
+		userService.save(user);
+        securityService.autologin(user.getUsername(), user.getPasswordConfirm());
+		return "redirect:";
 	}
 
 	@GetMapping("/login")
-	public String login() {
+	public String login(Model model, String error, String logout) {
+		if (error != null)
+            model.addAttribute("error", "Złe hasło lub username.");
+
+        if (logout != null)
+            model.addAttribute("message", "Wylogowanie zakończone sukcesem.");
+		
 		return "form/login";
 	}
 
 	@PostMapping("/login")
-	public String postLogin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession sess) {
+	public String postLogin(@RequestParam("username") String username, @RequestParam("password") String password,
+			HttpSession sess) {
 		User user = getUser(username);
 		if (user != null && BCrypt.checkpw(password, user.getPassword())) {
 			sess.setAttribute("logged", true);
-			return "redirect:/";
+			return "redirect:";
 		}
 		sess.setAttribute("logged", false);
 		String message = "";
@@ -64,11 +82,11 @@ public class UserController {
 		}
 		return "redirect:/user/login?message=" + message;
 	}
-	
+
 	@RequestMapping("/logout")
 	private String logout(HttpSession sess) {
 		sess.setAttribute("logged", false);
-		return "redirect:/";
+		return "redirect:";
 	}
 
 	private User getUser(String username) {
